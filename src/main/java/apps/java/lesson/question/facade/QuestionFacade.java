@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class QuestionFacade {
+public class QuestionFacade implements QuestionFacadeInterface {
     private MySQLAnswerRepository mySQLAnswerRepository;
     private MySQLTopicRepository mySQLTopicRepository;
     private MySQLQuestionRepository mySQLQuestionRepository;
@@ -33,6 +33,7 @@ public class QuestionFacade {
         this.mySQLQuestionRepository = mySQLQuestionRepository;
     }
 
+    @Override
     public TopicsArray getTopics(){
         TopicsArray topicArray = new TopicsArray();
         List<Topic> topics = new ArrayList<Topic>();
@@ -45,6 +46,7 @@ public class QuestionFacade {
         return topicArray;
     }
 
+    @Override
     public QuestionsArray getQuestions(int questionId){
         QuestionsArray questionsArray = new QuestionsArray();
         List<Question> questionList = new ArrayList<Question>();
@@ -57,6 +59,7 @@ public class QuestionFacade {
         return questionsArray;
     }
 
+    @Override
     public UserAnswersArray checkAnswers (UserAnswersArray userAnswersCheck){
         UserAnswersArray userAnswers = new UserAnswersArray();
         List<QuestionId> questionIdList = new ArrayList<QuestionId>();

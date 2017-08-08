@@ -1,14 +1,10 @@
 package apps.java.lesson.literature.entity.literature.hibernate;
 
-import apps.java.lesson.literature.entity.link.hibernate.LinkDB;
-
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
-@Table(name = "literature")
-public class LiteratureDB {
+@Table(name = "literature", schema = "mydb")
+public class Literature {
     @Id
     @GeneratedValue
     @Column(name = "literatureId")
@@ -20,20 +16,10 @@ public class LiteratureDB {
     @Column(name = "linkId")
     private int linkId;
 
-    @OneToMany
-    @JoinColumn(name = "linkId")
-    private Set<LinkDB> linkSet = new HashSet<LinkDB>();
-
     @Column(name = "description")
     private String description;
 
-    public Set<LinkDB> getLinkSet() {
-        return linkSet;
-    }
 
-    public void setLinkSet(Set<LinkDB> linkSet) {
-        this.linkSet = linkSet;
-    }
 
     public int getLiteratureId() {
         return literatureId;

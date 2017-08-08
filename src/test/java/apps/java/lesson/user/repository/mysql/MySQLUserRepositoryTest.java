@@ -1,3 +1,4 @@
+/*
 package apps.java.lesson.user.repository.mysql;
 
 import apps.java.lesson.user.entity.hibernate.UserDb;
@@ -24,3 +25,4 @@ public class MySQLUserRepositoryTest {
     }
 
 }
+*/

@@ -1,19 +1,19 @@
 package apps.java.lesson.literature.entity.client;
 
 
-import apps.java.lesson.literature.entity.literature.Literature;
+import apps.java.lesson.literature.entity.literature.LiteratureModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class LiteratureArray {
-    private List<Literature> literatureList = new ArrayList<Literature>();
+    private List<LiteratureModel> literatureModelList = new ArrayList<LiteratureModel>();
 
-    public List<Literature> getLiteratureList() {
-        return literatureList;
+    public List<LiteratureModel> getLiteratureModelList() {
+        return literatureModelList;
     }
 
-    public void setLiteratureList(List<Literature> literatureList) {
-        this.literatureList = literatureList;
+    public void setLiteratureModelList(List<LiteratureModel> literatureModelList) {
+        this.literatureModelList = literatureModelList;
     }
 }

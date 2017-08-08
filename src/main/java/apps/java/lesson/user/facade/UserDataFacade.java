@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserDataFacade {
+public class UserDataFacade implements UserDataFacadeInterface {
     private UserRepository userRepository;
 
     @Autowired
@@ -18,6 +18,7 @@ public class UserDataFacade {
         this.userRepository = userRepository;
     }
 
+    @Override
     public void update (UserData userData){
         User user = new User();
         user.setUserData(userData);
@@ -27,12 +28,14 @@ public class UserDataFacade {
         userRepository.updateUser(userDb);
     }
 
+    @Override
     public void create(User user){
         UserDb userDb = new UserDb();
         userDb.setUser(user);
         userRepository.createUserData(userDb);
     }
 
+    @Override
     public UserData getUser(String login){
         UserData userData = new UserData();
         for (UserDb userDb: userRepository.getAllUsers()) {
@@ -43,10 +46,12 @@ public class UserDataFacade {
         return userData;
     }
 
+    @Override
     public void deleteUser(int id) {
         userRepository.deleteUserData(id);
     }
 
+    @Override
     public boolean checkLogin(Login login){
         for (UserDb userDb: userRepository.getAllUsers()) {
             if(userDb.getEmail() == login.getLogin()){
@@ -56,6 +61,7 @@ public class UserDataFacade {
         return false;
     }
 
+    @Override
     public boolean checkPassword(Password password){
         for (UserDb userDb: userRepository.getAllUsers()) {
             if(userDb.getPassword() == password.getPassword().hashCode()){

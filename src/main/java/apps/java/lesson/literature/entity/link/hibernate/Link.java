@@ -1,13 +1,13 @@
 package apps.java.lesson.literature.entity.link.hibernate;
 
-import apps.java.lesson.literature.entity.link.Link;
-import apps.java.lesson.literature.entity.literature.hibernate.LiteratureDB;
+import apps.java.lesson.literature.entity.link.LinkModel;
+import apps.java.lesson.literature.entity.literature.hibernate.Literature;
 
 import javax.persistence.*;
 
 @Entity
 @Table(schema = "mydb",name = "link")
-public class LinkDB {
+public class Link {
 
     @Id
     @GeneratedValue
@@ -21,7 +21,7 @@ public class LinkDB {
     private int literatureId;
 
     @ManyToOne
-    private LiteratureDB literatureDB;
+    private Literature literature;
 
     public void setLink(String link) {
         this.link = link;
@@ -35,12 +35,12 @@ public class LinkDB {
         this.literatureId = literatureId;
     }
 
-    public LiteratureDB getLiteratureDB() {
-        return literatureDB;
+    public Literature getLiterature() {
+        return literature;
     }
 
-    public void setLiteratureDB(LiteratureDB literatureDB) {
-        this.literatureDB = literatureDB;
+    public void setLiterature(Literature literature) {
+        this.literature = literature;
     }
 
     public int getLinkID() {
@@ -59,8 +59,8 @@ public class LinkDB {
         this.link = link;
     }
 
-    public Link getLink(){
-        Link links = new Link();
+    public LinkModel getLink(){
+        LinkModel links = new LinkModel();
         links.setLink(link);
         links.setLinksID(linkID);
         return links;

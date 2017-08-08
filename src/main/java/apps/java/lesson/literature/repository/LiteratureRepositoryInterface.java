@@ -1,7 +1,7 @@
 package apps.java.lesson.literature.repository;
 
-import apps.java.lesson.literature.entity.literature.hibernate.LiteratureDB;
+import apps.java.lesson.literature.entity.literature.hibernate.Literature;
 import org.springframework.data.repository.CrudRepository;
 
-public interface LiteratureRepositoryInterface extends CrudRepository<LiteratureDB,Integer> {
+public interface LiteratureRepositoryInterface extends CrudRepository<Literature,Integer> {
 }

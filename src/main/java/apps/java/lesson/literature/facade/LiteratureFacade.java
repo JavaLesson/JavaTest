@@ -1,10 +1,10 @@
 package apps.java.lesson.literature.facade;
 
 import apps.java.lesson.literature.entity.client.LiteratureArray;
-import apps.java.lesson.literature.entity.link.Link;
-import apps.java.lesson.literature.entity.link.hibernate.LinkDB;
-import apps.java.lesson.literature.entity.literature.Literature;
-import apps.java.lesson.literature.entity.literature.hibernate.LiteratureDB;
+import apps.java.lesson.literature.entity.link.LinkModel;
+import apps.java.lesson.literature.entity.link.hibernate.Link;
+import apps.java.lesson.literature.entity.literature.LiteratureModel;
+import apps.java.lesson.literature.entity.literature.hibernate.Literature;
 import apps.java.lesson.literature.repository.MySQL.LinksRepository;
 import apps.java.lesson.literature.repository.MySQL.LiteratureRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class LiteratureFacade {
+public class LiteratureFacade implements LiteratureFacadeInterface{
     private LinksRepository linksRepository;
     private LiteratureRepository literatureRepository;
 
@@ -24,26 +24,27 @@ public class LiteratureFacade {
         this.literatureRepository = literatureRepository;
     }
 
+    @Override
     public LiteratureArray getLiterature(int questionId){
         LiteratureArray literatureArray = new LiteratureArray();
-        Literature literature = new Literature();
-        List<Literature> literatureList = new ArrayList<Literature>();
-        List<Link> linkList = new ArrayList<Link>();
-        for (LiteratureDB literatureDb: literatureRepository.getAllLiterature()) {
-            if (literatureDb.getQuestionId() == questionId){
-                for (LinkDB linkDb: linksRepository.getAllLinks()) {
-                    if (linkDb.getLinkID() == literatureDb.getLinkId()){
-                        linkList.add(linkDb.getLink());
+        LiteratureModel literatureModel = new LiteratureModel();
+        List<LiteratureModel> literatureModelList = new ArrayList<LiteratureModel>();
+        List<LinkModel> linkModelList = new ArrayList<LinkModel>();
+        for (Literature literature : literatureRepository.getAllLiterature()) {
+            if (literature.getQuestionId() == questionId){
+                for (Link link : linksRepository.getAllLinks()) {
+                    if (link.getLinkID() == literature.getLinkId()){
+                        linkModelList.add(link.getLink());
                     }
                 }
-                literature.setLiterature(literatureDb);
-                literature.setLinks(linkList);
-                literatureList.add(literature);
+                literatureModel.setLiterature(literature);
+                literatureModel.setLinkModels(linkModelList);
+                literatureModelList.add(literatureModel);
 
-                linkList = null;
+                linkModelList = null;
             }
         }
-        literatureArray.setLiteratureList(literatureList);
+        literatureArray.setLiteratureModelList(literatureModelList);
         return literatureArray;
     }
 }

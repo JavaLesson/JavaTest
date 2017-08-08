@@ -3,7 +3,7 @@ package apps.java.lesson.literature.entity.link;
 /**
  * Created by ${Alexey} on ${09.08.2016}.
  */
-public class Link {
+public class LinkModel {
 
     private int linkID;
     private String link;

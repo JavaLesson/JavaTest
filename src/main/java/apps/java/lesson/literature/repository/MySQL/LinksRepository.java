@@ -1,6 +1,6 @@
 package apps.java.lesson.literature.repository.MySQL;
 
-import apps.java.lesson.literature.entity.link.hibernate.LinkDB;
+import apps.java.lesson.literature.entity.link.hibernate.Link;
 import apps.java.lesson.literature.repository.LinksRepositoryInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -17,10 +17,10 @@ public class LinksRepository {
         this.linksRepository = linksRepository;
     }
 
-    public List<LinkDB> getAllLinks(){
-        List<LinkDB> links = new ArrayList<LinkDB>();
-        for (LinkDB linkDb: linksRepository.findAll()) {
-            links.add(linkDb);
+    public List<Link> getAllLinks(){
+        List<Link> links = new ArrayList<Link>();
+        for (Link link : linksRepository.findAll()) {
+            links.add(link);
         }
         return links;
     }

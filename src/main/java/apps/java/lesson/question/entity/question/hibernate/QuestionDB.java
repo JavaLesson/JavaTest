@@ -1,7 +1,7 @@
 package apps.java.lesson.question.entity.question.hibernate;
 
 
-import apps.java.lesson.literature.entity.literature.hibernate.LiteratureDB;
+import apps.java.lesson.literature.entity.literature.hibernate.Literature;
 import apps.java.lesson.question.entity.answer.hibernate.AnswerDB;
 import apps.java.lesson.question.entity.question.Question;
 import apps.java.lesson.question.entity.topic.hibernate.TopicDB;
@@ -29,7 +29,7 @@ public class QuestionDB {
     private TopicDB topicDB;
 
     @OneToMany
-    private Set<LiteratureDB> literatureDBSet = new HashSet<LiteratureDB>();
+    private Set<Literature> literatureSet = new HashSet<Literature>();
 
     @OneToMany
     private Set<AnswerDB> answerDBSet = new HashSet<AnswerDB>();
@@ -37,8 +37,8 @@ public class QuestionDB {
     @OneToMany
     private Set<UserQuestionDB> userQuestionDBSet = new HashSet<UserQuestionDB>();
 
-    public Set<LiteratureDB> getLiteratureDBSet() {
-        return literatureDBSet;
+    public Set<Literature> getLiteratureSet() {
+        return literatureSet;
     }
 
     public int getTopicId() {
@@ -49,8 +49,8 @@ public class QuestionDB {
         this.topicId = topicId;
     }
 
-    public void setLiteratureDBSet(Set<LiteratureDB> literatureDBSet) {
-        this.literatureDBSet = literatureDBSet;
+    public void setLiteratureSet(Set<Literature> literatureSet) {
+        this.literatureSet = literatureSet;
     }
 
     public Set<AnswerDB> getAnswerDBSet() {

@@ -1,3 +1,4 @@
+/*
 package apps.java.lesson.user.facade;
 
 
@@ -18,3 +19,4 @@ public class UserFacadeTest {
     }
 
 }
+*/
